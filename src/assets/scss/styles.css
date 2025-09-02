@@ -1,0 +1,198 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: "Inter", "Helvetica Neue", "Segoe UI", "Roboto", "Ubuntu", sans-serif;
+  color: #eee;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: #111;
+}
+body #root {
+  width: 100%;
+  overflow-x: hidden;
+}
+body #root .main {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 40px;
+}
+
+.text-custom-black {
+  color: #111;
+}
+
+.text-custom-white {
+  color: #eee;
+}
+
+.text-dark-blue {
+  color: rgb(0, 51, 117);
+}
+
+.text-mid-blue {
+  color: rgb(1, 80, 126);
+}
+
+.text-light-blue {
+  color: rgb(0, 123, 185);
+}
+
+.text-dark-green {
+  color: rgb(0, 67, 11);
+}
+
+.text-mid-green {
+  color: rgb(12, 108, 41);
+}
+
+.text-light-green {
+  color: rgb(43, 140, 41);
+}
+
+.text-dark-grey {
+  color: rgb(57, 57, 57);
+}
+
+.text-mid-grey {
+  color: rgb(130, 130, 130);
+}
+
+.text-light-grey {
+  color: rgb(200, 200, 200);
+}
+
+.text-dark-beige {
+  color: #97866c;
+}
+
+.text-mid-beige {
+  color: #c5af8e;
+}
+
+.text-light-beige {
+  color: #dfcfb7;
+}
+
+.bg-custom-black {
+  background-color: #111;
+}
+
+.bg-custom-white {
+  background-color: #eee;
+}
+
+.bg-dark-blue {
+  background-color: rgb(0, 51, 117);
+}
+
+.bg-mid-blue {
+  background-color: rgb(1, 80, 126);
+}
+
+.bg-light-blue {
+  background-color: rgb(0, 123, 185);
+}
+
+.bg-dark-green {
+  background-color: rgb(0, 67, 11);
+}
+
+.bg-mid-green {
+  background-color: rgb(12, 108, 41);
+}
+
+.bg-light-green {
+  background-color: rgb(43, 140, 41);
+}
+
+.bg-dark-grey {
+  background-color: rgb(57, 57, 57);
+}
+
+.bg-dark-grey-semi-transparent {
+  background-color: rgba(57, 57, 57, 0.5);
+}
+
+.bg-mid-grey {
+  background-color: rgb(130, 130, 130);
+}
+
+.bg-light-grey {
+  background-color: rgb(200, 200, 200);
+}
+
+.bg-dark-beige {
+  background-color: #97866c;
+}
+
+.bg-mid-beige {
+  background-color: #c5af8e;
+}
+
+.bg-light-beige {
+  background-color: #dfcfb7;
+}
+
+.title-page {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.title-section {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.title {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.paragraph {
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+
+.tooltip {
+  font-size: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 20px;
+  }
+  .title-page {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .title-section {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .title {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  .paragraph {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .tooltip {
+    font-size: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+}/*# sourceMappingURL=styles.css.map */
