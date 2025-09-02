@@ -15,3 +15,10 @@
 
 # Time Machine
 .DocumentRevisions-V100
+
+# Node modules and build output
+node_modules/
+dist/
+
+# Vite / gh-pages cache
+node_modules/.cache/
