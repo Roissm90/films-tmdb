@@ -1,0 +1,205 @@
+@use "../../assets/scss/variables" as v;
+
+.sctn-movies {
+  &:first-of-type {
+    margin-top: 148px;
+  }
+  .container {
+    .container-movies {
+      display: flex;
+      overflow: visible;
+      padding-top: 1rem;
+      //habilitar padding-bottom si se muestran botones
+      //padding-bottom: 40px;
+
+      .swipper-wrapper {
+        display: flex;
+        align-items: stretch;
+      }
+
+      .swiper-slide {
+        height: auto;
+        .movie {
+          width: 100%;
+          max-width: 100%;
+          transition: all 0.3s ease;
+          transform: scale(0.85);
+          opacity: 0.5;
+          cursor: pointer;
+
+          &.see-more {
+            display: block;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            span {
+              transition: all ease 0.3s;
+              &:hover {
+                transform: scale(1.2);
+              }
+              &.mobile {
+                display: none;
+              }
+            }
+          }
+
+          .picture-movie {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 6px;
+          }
+
+          .hide-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: -1;
+            width: 100%;
+            transform: scale(0);
+            transition: transform ease 0.3s;
+            padding: 1rem;
+
+            .title {
+              margin: 0;
+              height: 0;
+              visibility: hidden;
+              opacity: 0;
+            }
+          }
+        }
+
+        &.is-visible {
+          .movie {
+            transform: scale(1);
+            opacity: 1;
+          }
+
+          &.hover {
+            .movie {
+              transform: scale(1.1);
+
+              .hide-info {
+                transform: scale(1);
+                z-index: 10;
+                background-color: v.$customBlack;
+              }
+            }
+          }
+        }
+      }
+
+      .swiper-pagination {
+        top: calc(100% - 20px);
+        bottom: unset;
+        display: none;
+      }
+
+      .swiper-button-prev,
+      .swiper-button-next {
+        opacity: 0;
+        color: v.$beigeHover;
+
+        &:after {
+          background-color: transparent /*v.$darkGrey*/;
+          padding: 1rem 0.5rem;
+        }
+      }
+
+      &:hover {
+        .swiper-button-prev,
+        .swiper-button-next {
+          opacity: 1;
+          transition: all ease 0.3s;
+          
+          &.swiper-button-disabled {
+            pointer-events: auto;
+            opacity: 0.35;
+            visibility: hidden;
+            transition: all ease 0s;
+          }
+        }
+      }
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+
+      button {
+        padding: 0.2rem 0.5rem;
+        border-radius: 4px;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .sctn-movies {
+    .container {
+      .container-movies {
+        padding-bottom: 40px;
+        .swiper-button-prev,
+        .swiper-button-next {
+          display: none;
+        }
+
+        .swiper-pagination {
+          display: flex;
+          justify-content: center;
+
+          .swiper-pagination-bullet {
+            background-color: v.$customWhite;
+            transition: width ease 0.3s;
+            width: 8px;
+            height: 8px;
+
+            &.swiper-pagination-bullet-active {
+              width: 24px;
+              height: 8px;
+              border-radius: 4px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .sctn-movies {
+    .container {
+      .container-movies {
+        .swiper-slide {
+          &.is-visible {
+            &.hover {
+              .movie {
+                .hide-info {
+                  display: none;
+                }
+              }
+            }
+          }
+
+          .movie {
+            &.see-more {
+              span {
+                display: none;
+
+                &.mobile {
+                  display: block;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

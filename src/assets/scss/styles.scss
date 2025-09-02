@@ -1,0 +1,173 @@
+@use "./_variables.scss" as v;
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+  font-family: 'Inter', 'Helvetica Neue', 'Segoe UI', 'Roboto', 'Ubuntu', sans-serif;
+  color: v.$customWhite;
+}
+
+body {
+  width: 100vw;
+  overflow-x: hidden;
+  background-color: v.$customBlack;
+
+  #root {
+    width: 100%;
+    overflow-x: hidden;
+
+    .main {
+      width: 100%;
+      overflow-x: hidden;
+    }
+  }
+}
+
+.container {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 40px;
+}
+
+.text-custom-black {
+  color: v.$customBlack;
+}
+.text-custom-white {
+  color: v.$customWhite;
+}
+.text-dark-blue {
+  color: v.$darkBlue;
+}
+.text-mid-blue {
+  color: v.$midBlue;
+}
+.text-light-blue {
+  color: v.$lightBlue;
+}
+.text-dark-green {
+  color: v.$darkGreen;
+}
+.text-mid-green {
+  color: v.$midGreen;
+}
+.text-light-green {
+  color: v.$lightGreen;
+}
+.text-dark-grey {
+  color: v.$darkGrey;
+}
+.text-mid-grey {
+  color: v.$midGrey;
+}
+.text-light-grey {
+  color: v.$lightGrey;
+}
+.text-dark-beige {
+  color: v.$darkBeige;
+}
+.text-mid-beige {
+  color: v.$midBeige;
+}
+.text-light-beige {
+  color: v.$lightBeige;
+}
+
+.bg-custom-black {
+  background-color: v.$customBlack;
+}
+.bg-custom-white {
+  background-color: v.$customWhite;
+}
+.bg-dark-blue {
+  background-color: v.$darkBlue;
+}
+.bg-mid-blue {
+  background-color: v.$midBlue;
+}
+.bg-light-blue {
+  background-color: v.$lightBlue;
+}
+.bg-dark-green {
+  background-color: v.$darkGreen;
+}
+.bg-mid-green {
+  background-color: v.$midGreen;
+}
+.bg-light-green {
+  background-color: v.$lightGreen;
+}
+.bg-dark-grey {
+  background-color: v.$darkGrey;
+}
+.bg-dark-grey-semi-transparent {
+  background-color: v.$darkGreySemiTransparent;
+}
+.bg-mid-grey {
+  background-color: v.$midGrey;
+}
+.bg-light-grey {
+  background-color: v.$lightGrey;
+}
+.bg-dark-beige {
+  background-color: v.$darkBeige;
+}
+.bg-mid-beige {
+  background-color: v.$midBeige;
+}
+.bg-light-beige {
+  background-color: v.$lightBeige;
+}
+
+.title-page {
+  font-size: 1.4rem;
+  margin-bottom: 1.2rem;
+}
+.title-section {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+.title {
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+}
+.paragraph {
+  font-size: 0.8rem;
+  margin-bottom: 0.6rem;
+}
+.tooltip {
+  font-size: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding: 20px;
+  }
+
+  .title-page {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  .title-section {
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+  }
+  .title {
+    font-size: 0.8rem;
+    margin-bottom: 0.6rem;
+  }
+  .paragraph {
+    font-size: 0.7rem;
+    margin-bottom: 0.5rem;
+  }
+  .tooltip {
+    font-size: 0.5rem;
+    margin-bottom: 0.3rem;
+  }
+}

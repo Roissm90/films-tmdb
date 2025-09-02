@@ -1,0 +1,184 @@
+@use "../../assets/scss/variables" as v;
+
+.movies-page {
+  margin-top: 148px;
+  .container {
+    .title-page {
+        text-transform: capitalize;
+    }
+
+    .movies-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+
+      .movie-card {
+        width: 100%;
+        max-width: 100%;
+        cursor: pointer;
+        transition: all ease 0.3s;
+
+        .picture-movie {
+          width: 100%;
+          max-width: 100%;
+          object-fit: cover;
+          object-position: center;
+        }
+
+        &:hover {
+            transform: scale(1.1);
+        }
+      }
+    }
+
+    .pagination {
+        margin: 1rem auto 0;
+        width: fit-content;
+        
+        button {
+            border: none;
+            outline: none;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    }
+
+    .modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100dvh;
+        background-color: v.$lightGreySemiTransparent;
+        z-index: -1;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.show {
+            transition: opacity ease 0.3s;
+            opacity: 1;
+            z-index: 10;
+        }
+
+        .modal-content {
+            border-radius: 4px;
+            width: 90%;
+            max-height: 80dvh;
+            overflow-y: scroll;
+            max-width: 600px;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            padding: 1rem;
+            position: relative;
+    
+            .col-left {
+                width: 33%;
+
+                .picture-movie {
+                    width: 100%;
+                    max-width: 100%;
+                    object-fit: cover;
+                    object-position: center;
+                    border-radius: 4px;
+                }
+            }
+
+            .col-right {
+                width: 66%;
+
+                .actors-list {
+                    display: flex;
+                    flex-wrap: wrap;
+
+                    li {
+                        margin-right: 0.2rem;
+                        &:after {
+                            content: ","
+                        }
+
+                        &:first-child, &:last-child {
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .close-modal {
+                width: 1rem;
+                height: 1rem;
+                position: absolute;
+                top: 1rem;
+                right: 1rem;
+                background-color: transparent;
+                border: none;
+                outline: none;
+                cursor: pointer;
+
+                .line {
+                    position: absolute;
+                    width: 100%;
+                    height: 2px;
+                    left: 0;
+
+                    &.line-one {
+                        top: 50%;
+                        transform: rotate(45deg) //translateY();
+                    }
+                    &.line-two {
+                        top: 50%;
+                        transform: rotate(-45deg) //translateY();
+                    }
+                }
+            }
+        }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .movies-page {
+    .container {
+      .movies-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .movies-page {
+    .container {
+      .movies-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.8rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+    .movies-page {
+        .container {
+            .modal-overlay {
+                .modal-content {
+                    flex-direction: column;
+
+                    .col-left {
+                        width: 100%;
+                        max-width: 120px;
+                    }
+
+                    .col-right {
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+}

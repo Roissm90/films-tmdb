@@ -1,0 +1,127 @@
+@use "../../assets/scss/variables" as v;
+
+.search-bar-container {
+  margin-right: auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  top: 70px;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  min-height: 78px;
+  transition: top ease 0.5s;
+
+  &.hidden {
+    top: calc(-100% - 70px);
+  }
+
+  .search-form {
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    max-width: 767px;
+
+    .search-input {
+      flex: 1;
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      border: none;
+      outline: none;
+      border: 1px solid v.$midBeige;
+      margin: 0;
+    }
+
+    .search-button {
+      background-color: v.$midBeige;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: background 0.2s ease-in-out;
+
+      &:hover {
+        background-color: v.$lightBeige;
+      }
+    }
+
+    .clear-button {
+      width: 1rem;
+      height: 1rem;
+      position: absolute;
+      top: 80px;
+      right: 40px;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      z-index: 10;
+
+      @media (max-width: 767px) {
+        right: 20px;
+        top: 78px;
+      }
+
+      .line {
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        left: 0;
+        background-color: v.$darkGrey;
+
+        &.line-one {
+          top: 50%;
+          transform: rotate(45deg); //translateY();
+        }
+        &.line-two {
+          top: 50%;
+          transform: rotate(-45deg); //translateY();
+        }
+      }
+    }
+  }
+
+  .loading-text,
+  .error-text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #999;
+  }
+
+  .error-text {
+    color: red;
+  }
+
+  .container {
+    .sctn-movies {
+      &:first-of-type {
+        margin-top: 0;
+      }
+      .container {
+        padding-left: 0;
+        padding-right: 0;
+        padding-bottom: 0;
+
+        .title-section {
+          color: v.$darkGrey;
+        }
+
+        .container-movies {
+          .movie {
+            .tooltip {
+              color: v.$darkGrey;
+            }
+          }
+
+          .swiper-pagination-bullet {
+            background-color: v.$darkGrey;
+          }
+        }
+      }
+    }
+  }
+}

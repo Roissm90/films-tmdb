@@ -1,0 +1,65 @@
+.director-page {
+  margin-top: 148px;
+
+  .director-header {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+
+    .director-photo {
+      width: calc(50% - 0.5rem);
+      max-width: 180px;
+    }
+  }
+
+  .movies-section {
+    .movies-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: stretch;
+      justify-content: flex-start;
+      .movie-card {
+        width: calc(20% - 1rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        .picture-movie {
+          width: 100%;
+          max-width: 100%;
+          aspect-ratio: 2 / 3;
+        }
+      }
+    }
+  }
+}
+
+/*
+@media (max-width: 767px) {
+    .director-page {
+
+        .movies-section {
+            .movies-grid {
+                
+            }
+        }
+    }
+}
+*/
+@media (max-width: 576px) {
+    .director-page {
+        .director-header {
+            flex-direction: column;
+        }
+        .movies-section {
+            .movies-grid {
+                .movie-card {
+                    width: calc(33% - 1rem);
+                }
+            }
+        }
+    }
+}
