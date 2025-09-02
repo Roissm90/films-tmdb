@@ -1,24 +1,63 @@
-# macOS system files
+# ==============================
+# macOS System Files
+# ==============================
 .DS_Store
 .AppleDouble
 .LSOverride
-
-# Thumbnails and metadata
 ._*
-
-# Trash folder
 .Trashes
-
-# Temporary files
 .Spotlight-V100
 .TemporaryItems
-
-# Time Machine
 .DocumentRevisions-V100
 
-# Node modules and build output
+# ==============================
+# Node.js
+# ==============================
 node_modules/
-dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
 
-# Vite / gh-pages cache
+# ==============================
+# Build Output
+# ==============================
+dist/
+build/
+
+# ==============================
+# Vite Cache
+# ==============================
+.cache/
+vite.config.ts.timestamp-*
+vite.config.js.timestamp-*
+
+# ==============================
+# Environment Variables
+# ==============================
+.env
+.env.*.local
+
+# ==============================
+# Log Files
+# ==============================
+*.log
+logs
+*.gz
+
+# ==============================
+# Editor / IDE Config
+# ==============================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ==============================
+# gh-pages Cache
+# ==============================
 node_modules/.cache/
+gh-pages/
