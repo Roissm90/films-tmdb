@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { searchMovies } from "../../services/api";
+import { motion } from "framer-motion";
 import SectionMovies from "../sections/SectionsMovies";
 import "./_finder.scss";
 
@@ -65,9 +66,12 @@ const SearchBar = ({ genres, showHeader }) => {
   }, []);
 
   return (
-    <div
-      ref={containerRef} // 👈 asignamos el ref
-      className={`search-bar-container bg-custom-white ${showHeader ? "" : "hidden"}`}
+    <motion.div
+      ref={containerRef}
+      className="search-bar-container bg-custom-white"
+      initial={{ y: 0 }}
+      animate={{ y: showHeader ? 0 : -148 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
     >
       <div className="container">
         {/* Formulario de búsqueda */}
@@ -114,7 +118,7 @@ const SearchBar = ({ genres, showHeader }) => {
           />
         )}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

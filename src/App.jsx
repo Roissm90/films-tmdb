@@ -1,3 +1,4 @@
+import { useScrollDirection } from "react-use-scroll-direction";
 import React, { useEffect, useState, useRef } from "react";
 import Home from "./pages/home/Home";
 import { getPopularMovies, getGenres, getMoviesByGenre } from "./services/api";
@@ -12,21 +13,13 @@ function App() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [genres, setGenres] = useState([]);
   const [moviesByGenre, setMoviesByGenre] = useState({});
+  const { isScrollingUp, isScrollingDown } = useScrollDirection();
   const [showHeader, setShowHeader] = useState(true);
-  const lastScrollY = useRef(window.scrollY);
 
-  // Scroll handler
   useEffect(() => {
-    const onScroll = () => {
-      const currentY = window.scrollY;
-      if (currentY > lastScrollY.current + 10) setShowHeader(false);
-      else if (currentY < lastScrollY.current - 10) setShowHeader(true);
-      lastScrollY.current = currentY;
-    };
-
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    if (isScrollingDown && showHeader) setShowHeader(false);
+    else if (isScrollingUp && !showHeader) setShowHeader(true);
+  }, [isScrollingUp, isScrollingDown, showHeader]);
 
   // Fetch data...
   useEffect(() => {
@@ -73,7 +66,10 @@ function App() {
           element={<MoviesByGenre genres={genres} />}
         />
         <Route path="/movie/:id/:title" element={<Movie genres={genres} />} />
-        <Route path="/person/:personId/:personName" element={<Person genres={genres} />} />
+        <Route
+          path="/person/:personId/:personName"
+          element={<Person genres={genres} />}
+        />
       </Routes>
     </Router>
   );

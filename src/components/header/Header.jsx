@@ -2,17 +2,15 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useRef, useEffect } from "react";
 import "./_header.scss";
-import IconWeb from "../../assets/public/images/iconWeb.png"
+import IconWeb from "../../assets/public/images/iconWeb.png";
 
 const Header = ({ genres, showHeader }) => {
   const [showGenres, setShowGenres] = useState(false);
   const dropdownRef = useRef(null);
-  const location = useLocation(); // Ruta actual
-  //console.log(showHeader)
+  const location = useLocation();
 
   const toggleGenres = () => setShowGenres((prev) => !prev);
 
-  // Cerrar dropdown al hacer clic fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -23,19 +21,21 @@ const Header = ({ genres, showHeader }) => {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  // Detectar si estamos en alguna ruta de género
   const isGenreRoute = location.pathname.startsWith("/movies/genre");
-
-  // Obtener el genreId de la URL
   const pathSegments = location.pathname.split("/");
-  const currentGenreId = pathSegments[3]; // /movies/genre/:genreId/:genreName
+  const currentGenreId = pathSegments[3];
 
   return (
-    <header className={`header bg-custom-white ${showHeader ? "" : "hidden"}`}>
+    <motion.header
+      initial={{ y: 0 }}
+      animate={{ y: showHeader ? 0 : -148 }}
+      transition={{ duration: 0.3, ease: "easeInOut" }}
+      className="header bg-custom-white"
+    >
       <div className="container header-container">
         <div className="logo">
           <Link to="/" className="text-dark-grey title-page">
-            <img className="icon-web" alt="icon web" src={IconWeb}/>
+            <img className="icon-web" alt="icon web" src={IconWeb} />
           </Link>
         </div>
 
@@ -95,7 +95,7 @@ const Header = ({ genres, showHeader }) => {
           </ul>
         </nav>
       </div>
-    </header>
+    </motion.header>
   );
 };
 
