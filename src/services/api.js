@@ -134,3 +134,16 @@ export const getMovieVideos = async (movieId) => {
     return [];
   }
 };
+
+//obtener plataformas disponibles
+export const getMovieProviders = async (movieId) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/movie/${movieId}/watch/providers`, {
+      params: { api_key: API_KEY },
+    });
+    return response.data.results || {};
+  } catch (error) {
+    console.error("Error al obtener los proveedores:", error);
+    return {};
+  }
+};

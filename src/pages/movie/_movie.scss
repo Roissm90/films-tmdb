@@ -49,6 +49,28 @@
 
     .movie-details {
       width: calc(75% - 0.5rem);
+
+      .providers-list {
+        display: flex;
+        justify-content: flex-start;
+        align-items: stretch;
+        gap: 1rem;
+
+        .link-provider {
+          width: 3rem;
+          height: 3rem;
+          border-radius: 0.5rem;
+          display: flex;
+          overflow: hidden;
+
+          .provider-logo {
+            width: 100%;
+            max-width: 100%;
+            object-fit: cover;
+            object-position: center;
+          }
+        } 
+      }
     }
 
     .actors-section {

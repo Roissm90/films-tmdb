@@ -5,11 +5,12 @@ import {
   getMovieActors,
   getMovieCredits,
   getMovieVideos,
+  getMovieProviders,
 } from "../../services/api";
 import "./_movie.scss";
 import Header from "../../components/header/Header";
 import SearchBar from "../../components/searchBar/SearchBar";
-
+import { PLATFORM_URLS_BY_NAME } from "../../services/platformLinks";
 import DefaultImage from "../../assets/public/images/default.png";
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/original";
@@ -21,6 +22,7 @@ const Movie = ({ genres }) => {
   const [loading, setLoading] = useState(true);
   const [director, setDirector] = useState("");
   const [trailer, setTrailer] = useState([]);
+  const [providers, setProviders] = useState([]);
 
   // Obtener datos de la película y actores
   useEffect(() => {
@@ -49,6 +51,12 @@ const Movie = ({ genres }) => {
           (video) => video.type === "Trailer" && video.site === "YouTube"
         );
         setTrailer(trailer || null);
+
+        const provData = await getMovieProviders(id);
+        const country = "ES"; // según tu país
+        const streaming = provData[country]?.flatrate || [];
+        setProviders(streaming);
+        //console.log(streaming)
       } catch (error) {
         console.error("Error al cargar datos:", error);
       } finally {
@@ -157,6 +165,54 @@ const Movie = ({ genres }) => {
                 "Desconocido"
               )}
             </p>
+            {providers.length > 0 && (
+              <div className="streaming-providers">
+                <p className="title text-light-grey">Disponible en:</p>
+                <div className="providers-list">
+                  {providers.map((provider) => {
+                    let normalizedName = provider.provider_name
+                      .toLowerCase()
+                      .normalize("NFD")
+                      .replace(/[\u0300-\u036f]/g, "")
+                      .replace(/\s+/g, "");
+
+                    if (normalizedName.includes("movistarplus")) {
+                      normalizedName = "movistarplus+";
+                    } else if (normalizedName.includes("amazon")) {
+                      normalizedName = "primevideo";
+                    }
+
+                    const platformURL = PLATFORM_URLS_BY_NAME[normalizedName]
+                      ? `${
+                          PLATFORM_URLS_BY_NAME[normalizedName]
+                        }${encodeURIComponent(movie.title)}`
+                      : null;
+                    console.log(PLATFORM_URLS_BY_NAME);
+                    console.log("Provider original:", provider.provider_name);
+                    console.log("Normalizado:", normalizedName);
+                    console.log("URL generada:", platformURL);
+
+                    return (
+                      platformURL && (
+                        <a
+                          key={provider.provider_id}
+                          href={platformURL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="link-provider"
+                        >
+                          <img
+                            src={`https://image.tmdb.org/t/p/original${provider.logo_path}`}
+                            alt={provider.provider_name}
+                            className="provider-logo"
+                          />
+                        </a>
+                      )
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
           {/* Actores */}
           {actors.length > 0 && (
