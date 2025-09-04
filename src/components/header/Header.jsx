@@ -53,7 +53,18 @@ const Header = ({ genres, showHeader }) => {
                 Inicio
               </NavLink>
             </li>
-
+            <li>
+              <NavLink
+                to="/upcoming"
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link active text-dark-grey title-section"
+                    : "nav-link text-dark-grey title-section"
+                }
+              >
+                Próximamente
+              </NavLink>
+            </li>
             <li className="nav-link genres-dropdown" ref={dropdownRef}>
               <button
                 onClick={toggleGenres}
@@ -68,10 +79,10 @@ const Header = ({ genres, showHeader }) => {
                 {showGenres && Array.isArray(genres) && genres.length > 0 && (
                   <motion.ul
                     className="genres-list bg-custom-black"
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
+                    initial={{ opacity: 0, x: 200 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 200 }}
+                    transition={{ duration: 0.5, ease: "easeInOut" }}
                   >
                     {genres.map((genre) => (
                       <li key={genre.id}>
@@ -91,18 +102,6 @@ const Header = ({ genres, showHeader }) => {
                   </motion.ul>
                 )}
               </AnimatePresence>
-            </li>
-            <li>
-              <NavLink
-                to="/upcoming"
-                className={({ isActive }) =>
-                  isActive
-                    ? "nav-link active text-dark-grey title-section"
-                    : "nav-link text-dark-grey title-section"
-                }
-              >
-                Próximamente
-              </NavLink>
             </li>
           </ul>
         </nav>
