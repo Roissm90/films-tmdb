@@ -17,9 +17,14 @@ function App() {
   const [showHeader, setShowHeader] = useState(true);
 
   useEffect(() => {
+    if (window.scrollY === 0) {
+      setShowHeader(true);
+      //console.log(window.scrollY)
+      return;
+    }
     if (isScrollingDown && showHeader) setShowHeader(false);
     else if (isScrollingUp && !showHeader) setShowHeader(true);
-  }, [isScrollingUp, isScrollingDown, showHeader]);
+  }, [isScrollingUp, isScrollingDown]);
 
   // Fetch data...
   useEffect(() => {
