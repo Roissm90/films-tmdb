@@ -1,13 +1,13 @@
 @use "./_variables.scss" as v;
 
-
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
   list-style: none;
   text-decoration: none;
-  font-family: 'Inter', 'Helvetica Neue', 'Segoe UI', 'Roboto', 'Ubuntu', sans-serif;
+  font-family: "Inter", "Helvetica Neue", "Segoe UI", "Roboto", "Ubuntu",
+    sans-serif;
   color: v.$customWhite;
 }
 
@@ -127,22 +127,38 @@ body {
 .title-page {
   font-size: 1.4rem;
   margin-bottom: 1.2rem;
+
+  &.no-margin {
+    margin-bottom: 0;
+  }
 }
 .title-section {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+  &.no-margin {
+    margin-bottom: 0;
+  }
 }
 .title {
   font-size: 1rem;
   margin-bottom: 0.8rem;
+  &.no-margin {
+    margin-bottom: 0;
+  }
 }
 .paragraph {
   font-size: 0.8rem;
   margin-bottom: 0.6rem;
+  &.no-margin {
+    margin-bottom: 0;
+  }
 }
 .tooltip {
   font-size: 0.6rem;
   margin-bottom: 0.4rem;
+  &.no-margin {
+    margin-bottom: 0;
+  }
 }
 
 @media (max-width: 767px) {
@@ -153,21 +169,52 @@ body {
   .title-page {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    &.no-margin {
+      margin-bottom: 0;
+    }
   }
   .title-section {
     font-size: 1rem;
     margin-bottom: 0.8rem;
+    &.no-margin {
+      margin-bottom: 0;
+    }
   }
   .title {
     font-size: 0.8rem;
     margin-bottom: 0.6rem;
+    &.no-margin {
+      margin-bottom: 0;
+    }
   }
   .paragraph {
     font-size: 0.7rem;
     margin-bottom: 0.5rem;
+    &.no-margin {
+      margin-bottom: 0;
+    }
   }
   .tooltip {
     font-size: 0.5rem;
     margin-bottom: 0.3rem;
+    &.no-margin {
+      margin-bottom: 0;
+    }
+  }
+}
+
+.link-director {
+  color: v.$lightBlue;
+}
+
+.center-vertical {
+  display: flex;
+  align-items: center;
+
+  &.max-gap {
+    gap: 1rem;
+  }
+  &.min-gap {
+    gap: 0.5rem;
   }
 }

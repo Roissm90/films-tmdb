@@ -8,6 +8,7 @@ import {
 import Header from "../../components/header/Header";
 import SearchBar from "../../components/searchBar/SearchBar";
 import "./_moviesByGenre.scss";
+import DefaultImage from "../../assets/public/images/image_not_available.png"
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/w300";
 
@@ -95,7 +96,7 @@ const MoviesByGenre = ({ genres }) => {
                 onClick={() => openModal(movie)}
               >
                 <img
-                  src={`${BASE_IMG_URL}${movie.poster_path}`}
+                  src={movie.poster_path ? `${BASE_IMG_URL}${movie.poster_path}` : DefaultImage}
                   alt={movie.title}
                   className="picture-movie"
                 />
@@ -139,7 +140,7 @@ const MoviesByGenre = ({ genres }) => {
                     className="title-link"
                     onClick={closeModal}
                   >
-                    <h2 className="title text-light-grey">
+                    <h2 className="title text-light-blue">
                       {selectedMovie.title}
                     </h2>
                   </Link>
@@ -157,7 +158,7 @@ const MoviesByGenre = ({ genres }) => {
                         to={`/director/${director.id}/${director.name
                           .replace(/\s+/g, "-")
                           .toLowerCase()}`}
-                        className="link-director"
+                        className="link-director text-light-blue"
                         onClick={closeModal}
                       >
                         {director.name}

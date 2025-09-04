@@ -3,6 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import { getPersonDetails, getPersonMovies } from "../../services/api";
 import Header from "../../components/header/Header";
 import SearchBar from "../../components/searchBar/SearchBar";
+import DefaultImage from "../../assets/public/images/image_not_available.png"
 import "./_person.scss";
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/w300";
@@ -58,7 +59,7 @@ const Person = ({ genres }) => {
             src={
               director.profile_path
                 ? `${BASE_IMG_URL}${director.profile_path}`
-                : "/default.png"
+                : DefaultImage
             }
             alt={director.name}
             className="director-photo"
@@ -86,7 +87,7 @@ const Person = ({ genres }) => {
                   src={
                     movie.poster_path
                       ? `${BASE_IMG_URL}${movie.poster_path}`
-                      : "/default.png"
+                      : DefaultImage
                   }
                   alt={movie.title}
                   className="picture-movie"

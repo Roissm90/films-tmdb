@@ -1,13 +1,14 @@
 import { useScrollDirection } from "react-use-scroll-direction";
 import React, { useEffect, useState, useRef } from "react";
 import Home from "./pages/home/Home";
-import { getPopularMovies, getGenres, getMoviesByGenre } from "./services/api";
+import { getPopularMovies, getGenres, getMoviesByGenre, getUpcomingMovies } from "./services/api";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import MoviesByGenre from "./pages/moviesByGenre/MoviesByGenre";
 import Movie from "./pages/movie/Movie";
 import Header from "./components/header/Header";
 import SearchBar from "./components/searchBar/SearchBar";
 import Person from "./pages/person/Person";
+import Upcoming from "./pages/upcoming/Upcoming";
 
 function App() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -15,6 +16,7 @@ function App() {
   const [moviesByGenre, setMoviesByGenre] = useState({});
   const { isScrollingUp, isScrollingDown } = useScrollDirection();
   const [showHeader, setShowHeader] = useState(true);
+  const [nextMovies, setNextMovies] = useState([]);
 
   useEffect(() => {
     if (window.scrollY === 0) {
@@ -49,6 +51,14 @@ function App() {
     fetchMoviesByGenre();
   }, []);
 
+  useEffect(() => {
+    const fetchUpcoming = async () => {
+      const data = await getUpcomingMovies();
+      setNextMovies(data);
+    };
+    fetchUpcoming();
+  }, []);
+
   return (
     <Router>
       {/* Header y SearchBar fuera de Routes para que estén en todas las rutas */}
@@ -74,6 +84,10 @@ function App() {
         <Route
           path="/person/:personId/:personName"
           element={<Person genres={genres} />}
+        />
+        <Route
+          path="/upcoming"
+          element={<Upcoming nextMovies={nextMovies}/>}
         />
       </Routes>
     </Router>

@@ -79,7 +79,11 @@ export const getMovieActors = async (movieId) => {
 //Obtener datos de pelicula por id
 export const getMovieDetails = async (movieId) => {
   try {
-    const response = await api.get(`/movie/${movieId}`);
+    const response = await api.get(`/movie/${movieId}`, {
+      params: {
+        append_to_response: "release_dates,external_ids" // 👈 añadimos esto
+      },
+    });
     return response.data;
   } catch (error) {
     console.error(`Error al obtener detalles de la película ${movieId}:`, error);
@@ -145,5 +149,39 @@ export const getMovieProviders = async (movieId) => {
   } catch (error) {
     console.error("Error al obtener los proveedores:", error);
     return {};
+  }
+};
+
+//obtener próximos estrenos
+export const getUpcomingMovies = async (page = 1, region = "ES") => {
+  try {
+    const response = await api.get("/movie/upcoming", {
+      params: { page, region },
+    });
+
+    return {
+      results: response.data.results || [],
+      totalPages: response.data.total_pages || 1,
+    };
+  } catch (error) {
+    console.error("Error al obtener próximos estrenos:", error);
+    return { results: [], totalPages: 1 };
+  }
+};
+
+
+//obtener imagenes de peliculas
+export const getMovieImages = async (movieId) => {
+  try {
+    const { data } = await axios.get(`${BASE_URL}/movie/${movieId}/images`, {
+      params: {
+        api_key: API_KEY,
+        include_image_language: "es,en,null",
+      },
+    });
+    return data;
+  } catch (error) {
+    console.error("Error obteniendo imágenes de la película:", error);
+    return { backdrops: [] };
   }
 };

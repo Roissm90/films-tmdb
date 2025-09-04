@@ -1,0 +1,73 @@
+@use "../../assets/scss/variables" as v;
+
+.upcoming-page {
+  margin-top: 148px;
+
+  .title-section {
+  }
+
+  .release-block {
+    margin-bottom: 2rem;
+
+    .release-date {
+      border-bottom: 1px solid v.$lightGrey;
+    }
+
+    .movies-grid {
+      display: flex;
+      align-items: stretch;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 1rem;
+
+      .movie-card {
+        width: calc(20% - 1rem);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+
+        .picture-movie {
+          max-width: 100%;
+          width: 100%;
+          aspect-ratio: 3 / 4;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 991px) {
+  .upcoming-page {
+    .release-block {
+      .movies-grid {
+        .movie-card {
+          width: calc(25% - 1rem);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .upcoming-page {
+    .release-block {
+      .movies-grid {
+        .movie-card {
+          width: calc(33% - 1rem);
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .upcoming-page {
+    .release-block {
+      .movies-grid {
+        .movie-card {
+          width: calc(50% - 1rem);
+        }
+      }
+    }
+  }
+}

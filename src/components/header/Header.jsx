@@ -92,6 +92,18 @@ const Header = ({ genres, showHeader }) => {
                 )}
               </AnimatePresence>
             </li>
+            <li>
+              <NavLink
+                to="/upcoming"
+                className={({ isActive }) =>
+                  isActive
+                    ? "nav-link active text-dark-grey title-section"
+                    : "nav-link text-dark-grey title-section"
+                }
+              >
+                Próximamente
+              </NavLink>
+            </li>
           </ul>
         </nav>
       </div>

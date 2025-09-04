@@ -1,0 +1,118 @@
+@use "../../assets/scss/variables" as v;
+
+.gallery-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0);
+  transition: scale ease 0.5s;
+  background-color: v.$darkGreySemiTransparent;
+  background-color: #111111f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.visible {
+    z-index: 1001;
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+  }
+
+  .overlay {
+    width: 90%;
+    max-width: 1024px;
+
+    .swiper {
+      width: 100%;
+      max-width: 100%;
+      overflow: visible;
+
+      .swiper-wrapper {
+        width: 100%;
+
+        .swiper-slide {
+          aspect-ratio: 1;
+          display: flex;
+          align-items: center;
+          position: relative;
+          opacity: 0;
+          transition: opacity ease 0.3s;
+
+          &.swiper-slide-active {
+            opacity: 1;
+          }
+
+          .gallery-image {
+            width: 100%;
+          }
+
+          .close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+
+          }
+        }
+      }
+
+      .swiper-button-prev {
+        left: -2rem;
+        &:after {
+            color: v.$beigeHover
+        }
+      }
+
+      .swiper-button-next {
+        right: -2rem;
+        &:after {
+            color: v.$beigeHover
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 767px) {
+    .gallery-container {
+        .overlay {
+            .swiper {
+                .swiper-button-prev, .swiper-button-next {
+                    top: unset;
+                    bottom: 0;
+
+                    &:after {
+                        font-size: 2rem;
+                    }
+                }
+                .swiper-button-prev {
+                    left: 50%;
+                    transform: translateX(-200%);
+                }
+                .swiper-button-next {
+                    right: 50%;
+                    transform: translateX(200%)
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-container {
+        .overlay {
+            .swiper {
+                .swiper-button-prev, .swiper-button-next {
+                    &:after {
+                        font-size: 1.4rem;
+                    }
+                }
+            }
+        }
+    }
+}

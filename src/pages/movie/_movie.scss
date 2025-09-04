@@ -55,6 +55,7 @@
         justify-content: flex-start;
         align-items: stretch;
         gap: 1rem;
+        margin-bottom: 1rem;
 
         .link-provider {
           width: 3rem;
@@ -70,6 +71,27 @@
             object-position: center;
           }
         } 
+      }
+
+      .image-gallery-link {
+        cursor: pointer;
+        width: fit-content;
+        display: block;
+
+        &:after {
+          content: "";
+          display: block;
+          width: 0;
+          height: 1px;
+          background-color: v.$lightGrey;
+          border-radius: 4px;
+        }
+        &:hover {
+          &:after {
+            width: 100%;
+            transition: width ease 0.3s;
+          }
+        }
       }
     }
 

@@ -150,25 +150,40 @@ body #root .main {
   font-size: 1.4rem;
   margin-bottom: 1.2rem;
 }
+.title-page.no-margin {
+  margin-bottom: 0;
+}
 
 .title-section {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+}
+.title-section.no-margin {
+  margin-bottom: 0;
 }
 
 .title {
   font-size: 1rem;
   margin-bottom: 0.8rem;
 }
+.title.no-margin {
+  margin-bottom: 0;
+}
 
 .paragraph {
   font-size: 0.8rem;
   margin-bottom: 0.6rem;
 }
+.paragraph.no-margin {
+  margin-bottom: 0;
+}
 
 .tooltip {
   font-size: 0.6rem;
   margin-bottom: 0.4rem;
+}
+.tooltip.no-margin {
+  margin-bottom: 0;
 }
 
 @media (max-width: 767px) {
@@ -179,20 +194,49 @@ body #root .main {
     font-size: 1.2rem;
     margin-bottom: 1rem;
   }
+  .title-page.no-margin {
+    margin-bottom: 0;
+  }
   .title-section {
     font-size: 1rem;
     margin-bottom: 0.8rem;
+  }
+  .title-section.no-margin {
+    margin-bottom: 0;
   }
   .title {
     font-size: 0.8rem;
     margin-bottom: 0.6rem;
   }
+  .title.no-margin {
+    margin-bottom: 0;
+  }
   .paragraph {
     font-size: 0.7rem;
     margin-bottom: 0.5rem;
+  }
+  .paragraph.no-margin {
+    margin-bottom: 0;
   }
   .tooltip {
     font-size: 0.5rem;
     margin-bottom: 0.3rem;
   }
+  .tooltip.no-margin {
+    margin-bottom: 0;
+  }
+}
+.link-director {
+  color: rgb(0, 123, 185);
+}
+
+.center-vertical {
+  display: flex;
+  align-items: center;
+}
+.center-vertical.max-gap {
+  gap: 1rem;
+}
+.center-vertical.min-gap {
+  gap: 0.5rem;
 }/*# sourceMappingURL=styles.css.map */
